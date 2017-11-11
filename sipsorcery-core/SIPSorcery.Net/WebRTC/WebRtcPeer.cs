@@ -56,7 +56,7 @@ namespace SIPSorcery.Net
         private const int EXPIRE_CLIENT_SECONDS = 3;
         private const int RTP_MAX_PAYLOAD = 1400;
         private const int TIMESTAMP_SPACING = 3000;
-        private const int PAYLOAD_TYPE_ID = 100;
+        private const int PAYLOAD_TYPE_ID = 5000;
         private const int SRTP_AUTH_KEY_LENGTH = 10;
         private const int ICE_GATHERING_TIMEOUT_MILLISECONDS = 5000;
         private const int ICE_CONNECTION_LIMIT_SECONDS = 30;                    // The amount of time to give the ICE attempts time to establish a connection.
@@ -74,17 +74,15 @@ namespace SIPSorcery.Net
 o=- {0} 2 IN IP4 127.0.0.1
 s=-
 t=0 0
-m=video {1} RTP/SAVPF " + PAYLOAD_TYPE_ID + @"
+m=application {1} DTLS/SCTP " + PAYLOAD_TYPE_ID + @"
 c=IN IP4 {2}
 {3}
 a=ice-ufrag:{4}
 a=ice-pwd:{5}
 a=fingerprint:sha-256 {6}
 a=setup:actpass
-a=mid:video
-a=sendrecv
-a=rtcp-mux
-a=rtpmap:" + PAYLOAD_TYPE_ID + @" VP8/90000
+a=mid:data
+a=sctpmap:" + PAYLOAD_TYPE_ID + @" webrtc-datachannel 1024
 ";
 
         private static ILog logger = AppState.logger;
