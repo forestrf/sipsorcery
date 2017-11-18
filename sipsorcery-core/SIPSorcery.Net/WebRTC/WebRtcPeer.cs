@@ -527,7 +527,7 @@ a=sctpmap:" + PAYLOAD_TYPE_ID + @" webrtc-datachannel 1024
                     {
                         _communicationFailureCount++;
 
-                        logger.Warn("Exception ListenToReceiverWebRTCClient Receive (" + localEndPoint + " and " + remoteEndPoint + ", failure count " + _communicationFailureCount + "). " + sockExcp.Message);
+                        logger.Warn("Exception ListenToReceiverWebRTCClient Receive (" + localEndPoint + " and " + remoteEndPoint + ", failure count " + _communicationFailureCount + "). " + sockExcp.Message + " --- " + sockExcp.StackTrace);
 
                         // Need to be careful about deciding when the connection has failed. Sometimes the STUN requests we send will arrive before the remote peer is ready and cause a socket exception.
                         // Only shutdown the peer if we are sure all ICE intialisation is complete and the socket exception occurred after the RTP had stated flowing.

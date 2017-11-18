@@ -59,6 +59,7 @@ namespace SIPSorcery.Net
         public IPAddress LocalAddress;
         public Task RtpListenerTask;
         public TurnServer TurnServer;
+		public object tag;
         public bool IsGatheringComplete;
         public int TurnAllocateAttempts;
         public IPEndPoint StunRflxIPEndPoint;
